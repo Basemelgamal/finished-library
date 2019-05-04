@@ -1,6 +1,10 @@
 <!Doctype html>
 <html lang="en">
 
+<?php
+    include('include-des/header.php');
+    ?>
+
 <head>
     <meta charset="utf-8">
     <meta name="description" content="html for begginner ">
@@ -45,7 +49,7 @@
     <section class="search-form">
         <div class="container">
             <div class="form">
-                <form action="" method="POST">
+                <form method="POST" action="fun/add-book.php" enctype="multipart/form-data">
                     <div class="form-component">
                         <!-- ---------------------- -->
                         <!-- اختيار الشعبه  -->
@@ -53,6 +57,7 @@
                             <div class="options">
                                 <label for="">اختر الشعبه</label>
                                 <div class="select">
+                                    
                                     <select name="slct" class="mainselector" id="slct">
                                         <option value="1" class="cs ">علوم الحاسب</option>
                                         <option value="2" class="mis ">نظم المعلومات</option>
@@ -67,11 +72,16 @@
                                 <div class="options">
                                     <label for="">علوم الحاسب</label>
                                     <div class="select ">
-                                        <select name="slct computer-science" class="computerScience" id="slct"
+                                        <select name="category3" class="computerScience" id="slct"
                                             disabled="true">
-                                            <option value="1"> ---------------------- </option>
-                                            <option value="2"> ---------------------- </option>
-                                            <option value="3"> ---------------------- </option>
+                                            <?php 
+                                                 	include 'fun/connect.php';
+                                                 	$admin="SELECT * FROM category3 ";
+                                                    $result = $conn->query($admin);
+                                                 	while ($row2=$result->fetch_assoc()) {
+                                                ?>
+                                                <option value="<?php echo $row2['cat3_id'];?>"> <?php echo $row2['name'];?> </option>
+                                                <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -81,11 +91,16 @@
                                 <div class="options">
                                     <label for="">نظم المعلومات </label>
                                     <div class="select ">
-                                        <select name="slct information-systems" class="informationSystem" id="slct"
+                                        <select name="category2" class="informationSystem" id="slct"
                                             disabled="true">
-                                            <option value="1"> ---------------------- </option>
-                                            <option value="2"> ---------------------- </option>
-                                            <option value="3"> ---------------------- </option>
+                                            <?php
+                                                 	include 'fun/connect.php';
+                                                 	$admin="SELECT * FROM category2 ";
+                                                    $result = $conn->query($admin);
+                                                 	while ($row2=$result->fetch_assoc()) {
+                                                ?>
+                                                <option value="<?php echo $row2['cat2_id'];?>"> <?php echo $row2['name'];?> </option>
+                                                <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -95,11 +110,16 @@
                                 <div class="options">
                                     <label for=""> محاسبه</label>
                                     <div class="select">
-                                        <select name="slct accounting" class="accounting_placeholder" id="slct"
+                                        <select name="category1" class="accounting_placeholder" id="slct"
                                             disabled="true">
-                                            <option value="1"> ---------------------- </option>
-                                            <option value="2"> ---------------------- </option>
-                                            <option value="3"> ---------------------- </option>
+                                            	<?php
+                                                 	include 'fun/connect.php';
+                                                 	$admin="SELECT * FROM category1 ";
+                                                    $result = $conn->query($admin);
+                                                 	while ($row2=$result->fetch_assoc()) {
+                                                ?>
+                                                <option value="<?php echo $row2['cat1_id'];?>"> <?php echo $row2['name'];?> </option>
+                                                <?php } ?>
                                         </select>
                                     </div>
                                 </div>
